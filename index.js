@@ -4,14 +4,31 @@ const inputAuthor = document.querySelector('.bookauthor');
 const addBtn = document.querySelector('.add');
 const showBook = document.getElementById('books-list');
 const form = document.getElementById('form');
-// create an empty collection to store our books
+
 let bookList = [];
+//local storage
+const fromLS = () => {
+  if (localStorage.books) {
+    const from = JSON.parse(localStorage.books);
+    bookList = from;
+  }
+};
+
+const toLS = (list) => {
+  debugger
+  const to = JSON.stringify(list);
+  localStorage.setItem('books', to);
+};
+
+
+fromLS();
 
 function Book(title, author) {
   this.title = title;
   this.author = author;
 }
 
+// create an empty collection to store our books
 const printBooks = (bookList) => {
   showBook.innerHTML = '';
   bookList.map((item) => {
@@ -34,6 +51,7 @@ const printBooks = (bookList) => {
         books.title !== item.title || books.author !== item.author
       ));
       bookList = newArray;
+      toLS(newArray);
       printBooks(bookList);
     });
     return showBook.append(addBook);
@@ -74,7 +92,11 @@ addBtn.addEventListener('click', (e) => {
       books.title !== newBook.title || books.author !== newBook.author
     ));
     bookList = newArray;
+    toLS(newArray);
     printBooks(bookList);
   });
+  toLS(bookList)
   clearInput();
 });
+
+printBooks(bookList);
