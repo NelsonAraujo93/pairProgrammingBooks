@@ -77,7 +77,7 @@
 
 > Add a link to your deployed project.
 
-- [Live Demo Link](https://nelsonaraujo93.github.io/pairProgrammingBooks/index.html)
+- [Live Demo Link](https://nelsonaraujo93.github.io/pairProgrammingBooks/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -201,7 +201,7 @@ Example:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/NelsonAraujo93/pairProgrammingBooks/issues/1)
+Feel free to check the [issues page](https://github.com/NelsonAraujo93/pairProgrammingBooks/issues/2)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
