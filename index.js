@@ -4,9 +4,9 @@ const inputAuthor = document.querySelector('.bookauthor');
 const addBtn = document.querySelector('.add');
 const showBook = document.getElementById('books-list');
 const form = document.getElementById('form');
-
 let bookList = [];
-//local storage
+
+// local storage
 const fromLS = () => {
   if (localStorage.books) {
     const from = JSON.parse(localStorage.books);
@@ -15,11 +15,9 @@ const fromLS = () => {
 };
 
 const toLS = (list) => {
-  debugger
   const to = JSON.stringify(list);
   localStorage.setItem('books', to);
 };
-
 
 fromLS();
 
@@ -95,7 +93,7 @@ addBtn.addEventListener('click', (e) => {
     toLS(newArray);
     printBooks(bookList);
   });
-  toLS(bookList)
+  toLS(bookList);
   clearInput();
 });
 
