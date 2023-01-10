@@ -30,3 +30,8 @@ form {
   padding-left: 10px;
   line-height: 30px;
 }
+
+.addbook {
+  display: flex;
+  flex-direction: grid;
+}
