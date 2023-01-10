@@ -21,9 +21,11 @@ const toLS = (list) => {
 
 fromLS();
 
-function Book(title, author) {
-  this.title = title;
-  this.author = author;
+class Book {
+  constructor(title, author) {
+      this.title = title;
+      this.author = author;
+  }
 }
 
 // create an empty collection to store our books
@@ -62,7 +64,7 @@ function clearInput() {
 }
 
 // create a function to add a new book
-addBtn.addEventListener('click', (e) => {
+ addBtn.addEventListener('click', (e) => {
   e.preventDefault();
   const theTitle = inputTitle.value;
   const theAuthor = inputAuthor.value;
@@ -92,6 +94,7 @@ addBtn.addEventListener('click', (e) => {
     bookList = newArray;
     toLS(newArray);
     printBooks(bookList);
+    window.location.reload();
   });
   toLS(bookList);
   clearInput();
