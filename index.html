@@ -10,12 +10,15 @@
 <body>
   <div class="showbooks">
     <div class="heading">
-      <h1>Awesome books</h1>
+      <h1>All Awesome books</h1>
     </div>
     <div id="books-list"></div>
   </div>
 
   <form id="form" action="#">
+    <div class="heading">
+      <h1>Add a new book</h1>
+    </div>
     <div class="titlename">
       <label for="booktitle"></label>
       <input type="text" class="booktitle" id="title" name="book_title" placeholder="Title" required>
@@ -24,7 +27,7 @@
       <label for="bookauthor"></label>
       <input type="text" class="bookauthor" id="author" name="book_title" placeholder="Author" required>
     </div>
-    <button type="submit" class="add">Add</button>
+    <button type="submit" id="addbtn" class="add">Add</button>
   </form>
   <script src="index.js"></script>
 </body>
