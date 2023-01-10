@@ -48,14 +48,17 @@ const printBooks = (books) => {
   books.map((item) => {
     const addBook = document.createElement('div');
     addBook.className = 'addbook';
-    addBook.innerHTML = `<p class="title">${item.title}</p>
-      <p class="author">${item.author}</p>
+    const bookContent = document.createElement('div');
+    bookContent.className = 'book-content';
+    bookContent.innerHTML = `<p class="title">${theTitle}</p>
+      <p class="author">${theAuthor}</p>
     `;
     const btnRmv = document.createElement('button');
     btnRmv.className = 'remove';
     btnRmv.id = 'rmv-btn';
     btnRmv.innerHTML = 'remove';
-    addBook.append(btnRmv);
+    bookContent.append(btnRmv);
+    addBook.append(bookContent);
     const underline = document.createElement('div');
     underline.className = 'underline';
     addBook.append(underline);
@@ -82,17 +85,19 @@ addBtn.addEventListener('click', (e) => {
   const theAuthor = inputAuthor.value;
   const newBook = new Book(theTitle, theAuthor);
   booksList.addBook(newBook);
-
   const addBook = document.createElement('div');
   addBook.className = 'addbook';
-  addBook.innerHTML = `<p class="title">${theTitle}</p>
+  const bookContent = document.createElement('div');
+  bookContent.className = 'book-content';
+  bookContent.innerHTML = `<p class="title">${theTitle}</p>
     <p class="author">${theAuthor}</p>
   `;
   const btnRmv = document.createElement('button');
   btnRmv.className = 'remove';
   btnRmv.id = 'rmv-btn';
   btnRmv.innerHTML = 'remove';
-  addBook.append(btnRmv);
+  bookContent.append(btnRmv);
+  addBook.append(bookContent);
 
   const underline = document.createElement('div');
   underline.className = 'underline';

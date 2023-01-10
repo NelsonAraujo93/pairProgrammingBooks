@@ -70,7 +70,7 @@ form {
   align-items: center;
 }
 
-.addbook {
+.book-content {
   display: flex;
   flex-direction: grid;
   justify-content: space-between;
