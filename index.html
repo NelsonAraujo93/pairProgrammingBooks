@@ -8,6 +8,23 @@
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
+
+    <header class="header">
+      <h1 class="logo">Awesome books</h1>
+      <nav class="nav">
+        <ul class="navlist">
+          <li class="navitem"><a class="navlink" href="#bookList">List</a></li>
+          <li class="navitem"><a class="navlink" href="#addnew">Add new</a></li>
+          <li class="navitem"><a class="navlink" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+  </header>
+  <div class="date"></div>
+
+
+
+    <main class="main">
+      <section class="section">
     <div class="showbooks">
       <div class="heading">
         <h1>All awesome books</h1>
@@ -15,6 +32,10 @@
       <div id="books-list"></div>
     </div>
     <img class="underline" src="./assets/line.png">
+      </section>
+
+
+    <section class="addbookform section" id="addnew">
     <form id="form" action="#">
       <div class="heading">
         <h1>Add a new book</h1>
@@ -23,6 +44,27 @@
       <input type="text" class="bookauthor" id="author" name="book_title" placeholder="Author" required>
       <button type="submit" id="addbtn" class="add">Add</button>
     </form>
+  </section>
+
+
+    <section class="contactsection section" id="contact">
+      <h2>Contact information</h2>
+      <p>Do you have any questions or you just want to say "hello"?</p>
+      <ul>
+        <li class="contactlist">Our email: mail@mail.com</li>
+        <li class="contactlist">Our phonme number: 757543893</li>
+        <li class="contactlist">Our address: Streetname 22, 17389 City, Country</li>
+      </ul>
+    </section>
+  </main>
+
+
+  <footer>
+    <h1 class="logo">Copyright</h1>
+    <nav class="nav">
+      <p>.......</p>
+    </nav>
+</footer>
     <script src="./index.js"></script>
   </body>
 </html>
