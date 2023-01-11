@@ -1,3 +1,16 @@
+@font-face {
+  font-family: 'Jua-Regular';
+  src: url('./assets/fonts/Jua-Regular.ttf');
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Jua-Regular', sans-serif;
+  gap: 10px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,28 +18,95 @@
 
 .heading {
   margin-top: 20px;
-  margin-bottom: 20px;
-  padding-left: 10px;
+  padding-bottom: 10px;
+  font-size: 10px;
+  text-align: center;
 }
 
 .addbook {
   padding-left: 10px;
   line-height: 15px;
+  padding-right: 10px;
 }
 
-.author {
+.addbook:nth-child(odd) {
+  background-color: #d6d6d6;
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  line-height: 40px;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+  gap: 5px;
+}
+
+.add {
+  border: 2px solid #000;
+  box-shadow: 1px 2px 2px;
+  padding: 1px 5px;
+  display: flex;
+  align-self: flex-end;
+}
+
+.remove {
+  border: 2px solid #000;
+  box-shadow: 1px 2px 2px;
+  padding: 1px 4px;
+}
+
+#form input {
+  padding: 5px;
+  border: solid #000 2px;
+  border-radius: 1px;
+  box-sizing: border-box;
+  font-family: 'Jua-Regular', sans-serif;
+  width: 100%;
+}
+
+#form .heading {
+  margin-top: 0;
+}
+
+button {
+  font-family: 'Jua-Regular', sans-serif;
+}
+
+.book {
+  min-height: 30px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.book-content {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
   padding-bottom: 5px;
+  padding-top: 5px;
+  align-items: center;
 }
 
-.underline {
-  height: 1px;
-  width: 220px;
-  background-color: black;
-  margin-top: 10px;
-  margin-bottom: 20px;
+.showbooks {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
 }
 
-form {
-  padding-left: 10px;
-  line-height: 30px;
+#books-list {
+  border: 2px solid #444;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+img.underline {
+  max-width: 156px;
 }

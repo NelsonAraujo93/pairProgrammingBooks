@@ -1,31 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Awesome Books</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="showbooks">
-    <div class="heading">
-      <h1>Awesome books</h1>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome Books</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div class="showbooks">
+      <div class="heading">
+        <h1>All awesome books</h1>
+      </div>
+      <div id="books-list"></div>
     </div>
-    <div id="books-list"></div>
-  </div>
-
-  <form id="form" action="#">
-    <div class="titlename">
-      <label for="booktitle"></label>
+    <img class="underline" src="./assets/line.png">
+    <form id="form" action="#">
+      <div class="heading">
+        <h1>Add a new book</h1>
+      </div>
       <input type="text" class="booktitle" id="title" name="book_title" placeholder="Title" required>
-    </div>
-    <div class="author">
-      <label for="bookauthor"></label>
       <input type="text" class="bookauthor" id="author" name="book_title" placeholder="Author" required>
-    </div>
-    <button type="submit" class="add">Add</button>
-  </form>
-  <script src="index.js"></script>
-</body>
+      <button type="submit" id="addbtn" class="add">Add</button>
+    </form>
+    <script src="./index.js"></script>
+  </body>
 </html>

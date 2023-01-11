@@ -4,22 +4,38 @@ const inputAuthor = document.querySelector('.bookauthor');
 const addBtn = document.querySelector('.add');
 const showBook = document.getElementById('books-list');
 const form = document.getElementById('form');
-let bookList = [];
 
-// local storage
-const fromLS = () => {
-  if (localStorage.books) {
-    const from = JSON.parse(localStorage.books);
-    bookList = from;
+class BookList {
+  constructor(bookList) {
+    this.bookList = bookList;
   }
-};
 
-const toLS = (list) => {
-  const to = JSON.stringify(list);
-  localStorage.setItem('books', to);
-};
+  fromLs() {
+    if (localStorage.books) {
+      const from = JSON.parse(localStorage.books);
+      this.bookList = from;
+    }
+  }
 
-fromLS();
+  toLS() {
+    const stringBooks = JSON.stringify(this.bookList);
+    localStorage.setItem('books', stringBooks);
+  }
+
+  addBook(book) {
+    this.bookList.push(book);
+  }
+
+  remove(book) {
+    const newArray = this.bookList.filter((books) => (
+      books.title !== book.title || books.author !== book.author
+    ));
+    this.bookList = newArray;
+  }
+}
+
+const booksList = new BookList([]);
+booksList.fromLs();
 
 function Book(title, author) {
   this.title = title;
@@ -27,30 +43,29 @@ function Book(title, author) {
 }
 
 // create an empty collection to store our books
-const printBooks = (bookList) => {
+const printBooks = (books) => {
   showBook.innerHTML = '';
-  bookList.map((item) => {
+  books.map((item) => {
     const addBook = document.createElement('div');
     addBook.className = 'addbook';
-    addBook.innerHTML = `<p class="title">${item.title}</p>
-      <p class="author">${item.author}</p>
-    `;
+    const bookContent = document.createElement('div');
+    bookContent.className = 'book-content';
+    bookContent.innerHTML = `<p class="title">"${item.title}" by ${item.author}</p>`;
     const btnRmv = document.createElement('button');
     btnRmv.className = 'remove';
     btnRmv.id = 'rmv-btn';
-    btnRmv.innerHTML = 'remove';
-    addBook.append(btnRmv);
+    btnRmv.innerHTML = 'Remove';
+    bookContent.append(btnRmv);
+    addBook.append(bookContent);
     const underline = document.createElement('div');
     underline.className = 'underline';
     addBook.append(underline);
     btnRmv.addEventListener('click', (e) => {
       e.preventDefault();
-      const newArray = bookList.filter((books) => (
-        books.title !== item.title || books.author !== item.author
-      ));
-      bookList = newArray;
-      toLS(newArray);
-      printBooks(bookList);
+      booksList.remove(item);
+      booksList.toLS();
+      printBooks(booksList.bookList);
+      window.location.reload();
     });
     return showBook.append(addBook);
   });
@@ -67,18 +82,18 @@ addBtn.addEventListener('click', (e) => {
   const theTitle = inputTitle.value;
   const theAuthor = inputAuthor.value;
   const newBook = new Book(theTitle, theAuthor);
-  bookList.push(newBook);
-
+  booksList.addBook(newBook);
   const addBook = document.createElement('div');
   addBook.className = 'addbook';
-  addBook.innerHTML = `<p class="title">${theTitle}</p>
-    <p class="author">${theAuthor}</p>
-  `;
+  const bookContent = document.createElement('div');
+  bookContent.className = 'book-content';
+  bookContent.innerHTML = `<p class="title">"${theTitle}" by ${theAuthor}</p>`;
   const btnRmv = document.createElement('button');
   btnRmv.className = 'remove';
   btnRmv.id = 'rmv-btn';
-  btnRmv.innerHTML = 'remove';
-  addBook.append(btnRmv);
+  btnRmv.innerHTML = 'Remove';
+  bookContent.append(btnRmv);
+  addBook.append(bookContent);
 
   const underline = document.createElement('div');
   underline.className = 'underline';
@@ -86,15 +101,13 @@ addBtn.addEventListener('click', (e) => {
   showBook.append(addBook);
 
   btnRmv.addEventListener('click', () => {
-    const newArray = bookList.filter((books) => (
-      books.title !== newBook.title || books.author !== newBook.author
-    ));
-    bookList = newArray;
-    toLS(newArray);
-    printBooks(bookList);
+    booksList.remove(newBook);
+    booksList.toLS();
+    printBooks(booksList.bookList);
+    window.location.reload();
   });
-  toLS(bookList);
+  booksList.toLS();
   clearInput();
 });
 
-printBooks(bookList);
+printBooks(booksList.bookList);
