@@ -9,18 +9,21 @@ body {
   align-items: center;
   font-family: 'Jua-Regular', sans-serif;
   gap: 10px;
-}
-
-* {
-  margin: 0;
-  padding: 0;
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+  max-width: 1300px;
+  justify-content: center;
 }
 
 .heading {
-  margin-top: 20px;
   padding-bottom: 10px;
   font-size: 10px;
   text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
 }
 
 .addbook {
@@ -115,7 +118,9 @@ img.underline {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 3px solid grey;
+  border: 3px solid black;
+  width: 100%;
+  max-width: 1300px;
 }
 
 .navlist {
@@ -124,12 +129,16 @@ img.underline {
 }
 
 .navitem {
-  border-left: 2px solid grey;
+  border-left: 2px solid black;
+}
+
+.navitem:first-child {
+  border-left: unset;
 }
 
 .navlink {
-  font-size: 30px;
-  font-family: cursive;
+  font-size: 16px;
+  font-family: 'Jua-Regular', sans-serif;
   padding: 12px;
   text-decoration: none;
   color: initial;
@@ -137,7 +146,7 @@ img.underline {
 
 .navlink1 {
   font-size: 30px;
-  font-family: cursive;
+  font-family: 'Jua-Regular', sans-serif;
   padding: 12px;
   text-decoration: none;
   color: initial;
@@ -149,16 +158,18 @@ img.underline {
 
 .date {
   text-align: right;
-  padding: 15px 10px;
+  padding: 15px 0;
+  display: flex;
+  align-self: flex-end;
 }
 
 .main {
-  margin-top: 5%;
-}
-
-.addbookform,
-.contactsection {
-  margin-top: 10%;
+  margin-top: 10px;
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
 }
 
 .logo,
@@ -171,12 +182,16 @@ img.underline {
 }
 
 footer {
-  border: 3px solid grey;
+  border: 3px solid black;
   display: flex;
   align-items: center;
   position: fixed;
   width: 100%;
   bottom: 0;
+  margin: 10px;
+  box-sizing: border-box;
+  max-width: 1300px;
+  height: 66px;
 }
 
 .contactsection {
@@ -187,7 +202,23 @@ footer {
   display: none;
 }
 
-.bloc
-k {
+.block {
   display: block;
+}
+
+a.navlink:hover {
+  color: rgb(0, 58, 139);
+}
+
+.active a.navlink {
+  color: rgb(0, 58, 139);
+}
+
+section {
+  display: flex;
+  width: 100%;
+  max-width: 1300px;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
 }

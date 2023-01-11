@@ -1,6 +1,10 @@
 // declare variables
 const mainContainer = document.getElementById('main');
-
+const navItems = document.getElementsByClassName('navitem');
+const date = document.getElementById('date');
+date.innerHTML = new Date().toLocaleString('en-US', {
+  month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true, second: 'numeric',
+});
 
 class BookList {
   constructor(bookList) {
@@ -67,7 +71,7 @@ const printBooks = (books, container) => {
   });
 };
 
-function clearInput() {
+function clearInput(form) {
   form[0].value = '';
   form[1].value = '';
 }
@@ -89,13 +93,12 @@ const renderListSection = () => {
   bookSection.append(bookListContainer);
   mainContainer.append(bookSection);
   printBooks(booksList.bookList, bookListHtml);
-
-}
+};
 
 const renderAddSection = () => {
   mainContainer.innerHTML = '';
   const addSection = document.createElement('section');
-  addSection.id='addNew';
+  addSection.id = 'addNew';
   addSection.classList.add('addbookform', 'section');
   const form = document.createElement('form');
   form.id = 'form';
@@ -115,11 +118,9 @@ const renderAddSection = () => {
   addSection.append(form);
   mainContainer.append(addSection);
   addBtn.addEventListener('click', (e) => {
-    debugger;
     e.preventDefault();
     const inputTitle = document.querySelector('.booktitle');
     const inputAuthor = document.querySelector('.bookauthor');
-  
     const theTitle = inputTitle.value;
     const theAuthor = inputAuthor.value;
     const newBook = new Book(theTitle, theAuthor);
@@ -135,11 +136,9 @@ const renderAddSection = () => {
     btnRmv.innerHTML = 'Remove';
     bookContent.append(btnRmv);
     addBook.append(bookContent);
-  
     const underline = document.createElement('div');
     underline.className = 'underline';
     addBook.append(underline);
-  
     btnRmv.addEventListener('click', () => {
       booksList.remove(newBook);
       booksList.toLS();
@@ -147,16 +146,16 @@ const renderAddSection = () => {
       window.location.reload();
     });
     booksList.toLS();
-    clearInput();
-  })
-}
+    clearInput(form);
+  });
+};
 
 const renderContactSection = () => {
   mainContainer.innerHTML = '';
   const contactSection = document.createElement('section');
   contactSection.id = 'contact';
   contactSection.classList.add('contactsection', 'section');
-  contactSection.innerHTML = `<h2>Contact information</h2>
+  contactSection.innerHTML = `<h1>Contact information</h1>
   <p>Do you have any questions or you just want to say "hello"?</p>
   <ul>
     <li class="contactlist">Our email: mail@mail.com</li>
@@ -164,20 +163,31 @@ const renderContactSection = () => {
     <li class="contactlist">Our address: Streetname 22, 17389 City, Country</li>
   </ul>`;
   mainContainer.append(contactSection);
-}
+};
 
 const navigation = (value) => {
   switch (value) {
     case 0:
+      navItems[0].classList.add('active');
+      navItems[1].classList.remove('active');
+      navItems[2].classList.remove('active');
       renderListSection();
-    break;
+      break;
     case 1:
+      navItems[1].classList.add('active');
+      navItems[0].classList.remove('active');
+      navItems[2].classList.remove('active');
       renderAddSection();
-    break;
+      break;
     case 2:
+      navItems[2].classList.add('active');
+      navItems[1].classList.remove('active');
+      navItems[0].classList.remove('active');
       renderContactSection();
-    break;
+      break;
+    default:
+      break;
   }
-}
+};
 
 navigation(0);
