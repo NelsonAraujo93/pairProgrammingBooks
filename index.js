@@ -1,9 +1,6 @@
 // declare variables
-const inputTitle = document.querySelector('.booktitle');
-const inputAuthor = document.querySelector('.bookauthor');
-const addBtn = document.querySelector('.add');
-const showBook = document.getElementById('books-list');
-const form = document.getElementById('form');
+const mainContainer = document.getElementById('main');
+
 
 class BookList {
   constructor(bookList) {
@@ -43,8 +40,7 @@ function Book(title, author) {
 }
 
 // create an empty collection to store our books
-const printBooks = (books) => {
-  showBook.innerHTML = '';
+const printBooks = (books, container) => {
   books.map((item) => {
     const addBook = document.createElement('div');
     addBook.className = 'addbook';
@@ -67,7 +63,7 @@ const printBooks = (books) => {
       printBooks(booksList.bookList);
       window.location.reload();
     });
-    return showBook.append(addBook);
+    return container.append(addBook);
   });
 };
 
@@ -76,38 +72,101 @@ function clearInput() {
   form[1].value = '';
 }
 
-// create a function to add a new book
-addBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  const theTitle = inputTitle.value;
-  const theAuthor = inputAuthor.value;
-  const newBook = new Book(theTitle, theAuthor);
-  booksList.addBook(newBook);
-  const addBook = document.createElement('div');
-  addBook.className = 'addbook';
-  const bookContent = document.createElement('div');
-  bookContent.className = 'book-content';
-  bookContent.innerHTML = `<p class="title">"${theTitle}" by ${theAuthor}</p>`;
-  const btnRmv = document.createElement('button');
-  btnRmv.className = 'remove';
-  btnRmv.id = 'rmv-btn';
-  btnRmv.innerHTML = 'Remove';
-  bookContent.append(btnRmv);
-  addBook.append(bookContent);
+const renderListSection = () => {
+  mainContainer.innerHTML = '';
+  const bookSection = document.createElement('section');
+  bookSection.id = 'list';
+  bookSection.className = 'section';
+  const bookListContainer = document.createElement('div');
+  bookListContainer.className = 'showbooks';
+  const bookListHeader = document.createElement('div');
+  bookListHeader.className = 'heading';
+  bookListHeader.innerHTML = '<h1>All awesome books</h1>';
+  const bookListHtml = document.createElement('div');
+  bookListHtml.id = 'books-list';
+  bookListContainer.append(bookListHeader);
+  bookListContainer.append(bookListHtml);
+  bookSection.append(bookListContainer);
+  mainContainer.append(bookSection);
+  printBooks(booksList.bookList, bookListHtml);
 
-  const underline = document.createElement('div');
-  underline.className = 'underline';
-  addBook.append(underline);
-  showBook.append(addBook);
+}
 
-  btnRmv.addEventListener('click', () => {
-    booksList.remove(newBook);
+const renderAddSection = () => {
+  mainContainer.innerHTML = '';
+  const addSection = document.createElement('section');
+  addSection.id='addNew';
+  addSection.classList.add('addbookform', 'section');
+  const form = document.createElement('form');
+  form.id = 'form';
+  form.innerHTML = `<div class="heading">
+    <h1>Add a new book</h1>
+  </div>
+  <input type="text" class="booktitle" id="title" name="book_title" placeholder="Title" required>
+  <input type="text" class="bookauthor" id="author" name="book_title" placeholder="Author" required>`;
+
+  const addBtn = document.createElement('button');
+  addBtn.id = 'addBtn';
+  addBtn.className = 'add';
+  addBtn.type = 'submit';
+  addBtn.innerHTML = 'Add';
+  form.append(addBtn);
+
+  addSection.append(form);
+  mainContainer.append(addSection);
+  addBtn.addEventListener('click', (e) => {
+    debugger;
+    e.preventDefault();
+    const inputTitle = document.querySelector('.booktitle');
+    const inputAuthor = document.querySelector('.bookauthor');
+  
+    const theTitle = inputTitle.value;
+    const theAuthor = inputAuthor.value;
+    const newBook = new Book(theTitle, theAuthor);
+    booksList.addBook(newBook);
+    const addBook = document.createElement('div');
+    addBook.className = 'addbook';
+    const bookContent = document.createElement('div');
+    bookContent.className = 'book-content';
+    bookContent.innerHTML = `<p class="title">"${theTitle}" by ${theAuthor}</p>`;
+    const btnRmv = document.createElement('button');
+    btnRmv.className = 'remove';
+    btnRmv.id = 'rmv-btn';
+    btnRmv.innerHTML = 'Remove';
+    bookContent.append(btnRmv);
+    addBook.append(bookContent);
+  
+    const underline = document.createElement('div');
+    underline.className = 'underline';
+    addBook.append(underline);
+  
+    btnRmv.addEventListener('click', () => {
+      booksList.remove(newBook);
+      booksList.toLS();
+      printBooks(booksList.bookList);
+      window.location.reload();
+    });
     booksList.toLS();
-    printBooks(booksList.bookList);
-    window.location.reload();
-  });
-  booksList.toLS();
-  clearInput();
-});
+    clearInput();
+  })
+}
 
-printBooks(booksList.bookList);
+const renderContactSection = () => {
+
+}
+
+const navigation = (value) => {
+  switch (value) {
+    case 0:
+      renderListSection();
+    break;
+    case 1:
+      renderAddSection();
+    break;
+    case 2:
+      renderContactSection();
+    break;
+  }
+}
+
+navigation(0);
