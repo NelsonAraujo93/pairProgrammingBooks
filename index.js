@@ -2,8 +2,8 @@
 const inputTitle = document.querySelector('.booktitle');
 const inputAuthor = document.querySelector('.bookauthor');
 const addBtn = document.querySelector('.add');
-const showBook = document.getElementById('books-list');
 const form = document.getElementById('form');
+const mainContainer = document.getElementById('main-container');
 
 class BookList {
   constructor(bookList) {
@@ -43,8 +43,7 @@ function Book(title, author) {
 }
 
 // create an empty collection to store our books
-const printBooks = (books) => {
-  showBook.innerHTML = '';
+const printBooks = (books, container) => {
   books.map((item) => {
     const addBook = document.createElement('div');
     addBook.className = 'addbook';
@@ -67,7 +66,7 @@ const printBooks = (books) => {
       printBooks(booksList.bookList);
       window.location.reload();
     });
-    return showBook.append(addBook);
+    return container.append(addBook);
   });
 };
 
@@ -98,7 +97,6 @@ addBtn.addEventListener('click', (e) => {
   const underline = document.createElement('div');
   underline.className = 'underline';
   addBook.append(underline);
-  showBook.append(addBook);
 
   btnRmv.addEventListener('click', () => {
     booksList.remove(newBook);
@@ -110,4 +108,42 @@ addBtn.addEventListener('click', (e) => {
   clearInput();
 });
 
-printBooks(booksList.bookList);
+const printBooksSection = () => {
+  const bookSection = document.createElement('section');
+  bookSection.id = 'book-list-section';
+  bookSection.className = 'showbooks';
+  const bookListHeader = document.createElement('div');
+  bookListHeader.className = 'heading';
+  bookListHeader.innerHTML = '<h1>All awesome books</h1>';
+  bookSection.append(bookListHeader);
+  const bookListContainer = document.createElement('div');
+  bookListContainer.id = 'books-list';
+  bookSection.append(bookListContainer);
+  mainContainer.append(bookSection);
+  printBooks(booksList.bookList, bookListContainer);
+}
+
+const printAddSection = () => {
+  
+}
+
+const printContactSection = () => {
+  
+}
+
+const navigation = (value) => {
+  switch (value) {
+    case 0:
+      printBooksSection();
+    break;
+    case 1:
+
+    break;
+    case 2:
+
+    break;
+  }
+  debugger;
+}
+
+navigation(0);

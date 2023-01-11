@@ -8,21 +8,28 @@
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
-    <div class="showbooks">
-      <div class="heading">
-        <h1>All awesome books</h1>
-      </div>
-      <div id="books-list"></div>
-    </div>
-    <img class="underline" src="./assets/line.png">
-    <form id="form" action="#">
-      <div class="heading">
-        <h1>Add a new book</h1>
-      </div>
-      <input type="text" class="booktitle" id="title" name="book_title" placeholder="Title" required>
-      <input type="text" class="bookauthor" id="author" name="book_title" placeholder="Author" required>
-      <button type="submit" id="addbtn" class="add">Add</button>
-    </form>
+    <header>
+      <nav>
+        <ul id="nav-list">
+          <li onclick="navigation(0)">List</li>
+          <li onclick="navigation(1)">Add new</li>
+          <li onclick="navigation(2)">Contact</li>
+        </ul>
+      </nav>
+    </header>
+    <main id="main-container">
+      <section id="add-book">
+        <form id="form" action="#">
+          <div class="heading">
+            <h1>Add a new book</h1>
+          </div>
+          <input type="text" class="booktitle" id="title" name="book_title" placeholder="Title" required>
+          <input type="text" class="bookauthor" id="author" name="book_title" placeholder="Author" required>
+          <button type="submit" id="addbtn" class="add">Add</button>
+        </form>
+      </section>
+      <section id="contact"></section>
+    </main>
     <script src="./index.js"></script>
   </body>
 </html>
