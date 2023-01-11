@@ -1,3 +1,16 @@
+@font-face {
+  font-family: 'Jua-Regular';
+  src: url('./assets/fonts/Jua-Regular.ttf');
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Jua-Regular', sans-serif;
+  gap: 10px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,33 +19,36 @@
 .heading {
   margin-top: 20px;
   padding-bottom: 10px;
-  font-family: cursive;
   font-size: 10px;
   text-align: center;
 }
 
 .addbook {
   padding-left: 10px;
-  line-height: 15px;  
+  line-height: 15px;
   padding-right: 10px;
 }
 
-#books-list {
-  border: 2px solid #444;
+.addbook:nth-child(odd) {
+  background-color: #d6d6d6;
 }
 
-form {
-  margin-top: 40px;
-  padding-left: 10px;
+#form {
+  display: flex;
+  flex-direction: column;
   line-height: 40px;
   text-align: center;
+  width: 100%;
+  max-width: 500px;
+  gap: 5px;
 }
 
 .add {
-  margin-left: 47vw;
   border: 2px solid #000;
   box-shadow: 1px 2px 2px;
   padding: 1px 5px;
+  display: flex;
+  align-self: flex-end;
 }
 
 .remove {
@@ -45,6 +61,17 @@ form {
   padding: 5px;
   border: solid #000 2px;
   border-radius: 1px;
+  box-sizing: border-box;
+  font-family: 'Jua-Regular', sans-serif;
+  width: 100%;
+}
+
+#form .heading {
+  margin-top: 0;
+}
+
+button {
+  font-family: 'Jua-Regular', sans-serif;
 }
 
 .book {
@@ -57,9 +84,29 @@ form {
 
 .book-content {
   display: flex;
-  flex-direction: grid;
   justify-content: space-between;
   font-size: 15px;
   padding-bottom: 5px;
   padding-top: 5px;
+  align-items: center;
+}
+
+.showbooks {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+#books-list {
+  border: 2px solid #444;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+img.underline {
+  max-width: 156px;
 }

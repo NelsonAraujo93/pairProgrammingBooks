@@ -50,9 +50,7 @@ const printBooks = (books) => {
     addBook.className = 'addbook';
     const bookContent = document.createElement('div');
     bookContent.className = 'book-content';
-    bookContent.innerHTML = `<p class="title">${theTitle}</p>
-      <p class="author">${theAuthor}</p>
-    `;
+    bookContent.innerHTML = `<p class="title">"${item.title}" by ${item.author}</p>`;
     const btnRmv = document.createElement('button');
     btnRmv.className = 'remove';
     btnRmv.id = 'rmv-btn';
@@ -89,9 +87,7 @@ addBtn.addEventListener('click', (e) => {
   addBook.className = 'addbook';
   const bookContent = document.createElement('div');
   bookContent.className = 'book-content';
-  bookContent.innerHTML = `<p class="title">${theTitle}</p>
-    <p class="author">${theAuthor}</p>
-  `;
+  bookContent.innerHTML = `<p class="title">"${theTitle}" by ${theAuthor}</p>`;
   const btnRmv = document.createElement('button');
   btnRmv.className = 'remove';
   btnRmv.id = 'rmv-btn';
