@@ -8,21 +8,25 @@
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
-    <div class="showbooks">
-      <div class="heading">
-        <h1>All awesome books</h1>
-      </div>
-      <div id="books-list"></div>
-    </div>
-    <img class="underline" src="./assets/line.png">
-    <form id="form" action="#">
-      <div class="heading">
-        <h1>Add a new book</h1>
-      </div>
-      <input type="text" class="booktitle" id="title" name="book_title" placeholder="Title" required>
-      <input type="text" class="bookauthor" id="author" name="book_title" placeholder="Author" required>
-      <button type="submit" id="addbtn" class="add">Add</button>
-    </form>
+    <header class="header">
+      <h3 class="logo">Awesome books</h1>
+      <nav class="nav">
+        <ul class="navlist">
+          <li class="navitem" onclick="navigation(0)"><a class="navlink" href="#bookList">List</a></li>
+          <li class="navitem" onclick="navigation(1)"><a class="navlink" href="#addnew">Add new</a></li>
+          <li class="navitem" onclick="navigation(2)"><a class="navlink" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div id="date" class="date"></div>
+    <main id="main" class="main">
+    </main>
+    <footer>
+      <h1 class="logo">Copyright</h1>
+      <nav class="nav">
+        <p>.......</p>
+      </nav>
+    </footer>
     <script src="./index.js"></script>
   </body>
 </html>
